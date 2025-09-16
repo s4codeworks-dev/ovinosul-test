@@ -18,9 +18,15 @@ function initializeApp() {
 
 // Header functionality
 function initializeHeader() {
-    const header = document.querySelector('.header');
+    const header = document.querySelector('.modern-navigation');
     let lastScrollY = window.scrollY;
     let isScrolled = false;
+
+    // Early return if header not found
+    if (!header) {
+        console.log('Navigation header not found');
+        return;
+    }
 
     function updateHeader() {
         const currentScrollY = window.scrollY;
