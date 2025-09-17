@@ -58,16 +58,24 @@ function initializeHeader() {
 
 // Mobile menu functionality
 function initializeMobileMenu() {
-    // Mobile menu functionality removed - replaced with sub-header carousel
-    console.log('Mobile menu functionality has been replaced with sub-header carousel');
+    // Mobile menu functionality is already handled by inline JavaScript in index.html
+    // This prevents conflicts with the existing implementation
+    console.log('📱 Mobile menu functionality is handled by inline JavaScript in HTML');
 }
 
 // Search functionality
 function initializeSearch() {
-    const searchInput = document.querySelector('.search-input');
+    const searchInput = document.getElementById('hero-search-input');
     const searchBtn = document.querySelector('.search-btn');
+    
+    // Also look for search button by different possible selectors since HTML might not have .search-btn class
+    const searchBtnFallback = document.querySelector('button[aria-label*="buscar"], button[aria-label*="search"]');
+    const actualSearchBtn = searchBtn || searchBtnFallback;
 
-    if (!searchInput || !searchBtn) return;
+    if (!searchInput) {
+        console.log('Search input not found');
+        return;
+    }
 
     // Create search index for the site
     const searchIndex = [
@@ -356,7 +364,12 @@ function initializeSearch() {
     };
 
     // Search event listeners
-    searchBtn.addEventListener('click', performSearch);
+    if (actualSearchBtn) {
+        actualSearchBtn.addEventListener('click', performSearch);
+        console.log('🔍 Search button event listener added');
+    } else {
+        console.log('⚠️ Search button not found - search will work with Enter key only');
+    }
     
     searchInput.addEventListener('keydown', function(e) {
         if (e.key === 'Enter') {
