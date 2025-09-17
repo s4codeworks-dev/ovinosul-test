@@ -1,4 +1,5 @@
-<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,22 +8,55 @@
     <meta name="author" content="OvinoSul">
     <title>OvinoSul - Criação de Ovinos no Rio Grande do Sul</title>
     
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'display': ['Inter', 'system-ui', 'sans-serif']
+                    },
+                    colors: {
+                        'primary': {
+                            50: '#ecfeff',
+                            100: '#cffafe',
+                            500: '#06b6d4',
+                            600: '#0891b2',
+                            700: '#0e7490',
+                            800: '#155e75',
+                            900: '#164e63'
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-in-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'float': 'float 6s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
     <!-- Preload critical resources -->
     <link rel="preload" href="hero.jpg" as="image">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"></noscript>
-    
-    <!-- DNS prefetch for external resources -->
-    <link rel="dns-prefetch" href="//fonts.googleapis.com">
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="modern-navigation.css">
-    <link rel="stylesheet" href="hero.css">
-    <link rel="stylesheet" href="features.css">
-    <link rel="stylesheet" href="buttons.css">
-    <link rel="stylesheet" href="mobile.css">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"></noscript>
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -30,7 +64,7 @@
     
     <!-- Web App Manifest -->
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#2563eb">
+    <meta name="theme-color" content="#0891b2">
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="OvinoSul - Criação de Ovinos no Rio Grande do Sul">
@@ -76,364 +110,369 @@
         "keywords": "ovinos, Rio Grande do Sul, vacinação, raças, criação, pecuária, RS, ovinocultura"
     }
     </script>
+    
+    <!-- Custom styles for SVG backgrounds -->
+    <style>
+        .hero-background {
+            background-image: url('hero-background.svg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .features-background {
+            background-image: url('features-background.svg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .nav-background {
+            background-image: url('navigation-background.svg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        /* Glass morphism effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .glass-dark {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+    </style>
 </head>
-<body>
+<body class="font-sans antialiased bg-gray-50 text-gray-900">
     <!-- Skip to main content for accessibility -->
-    <a href="#main" class="skip-link" aria-label="Pular para o conteúdo principal">Pular para o conteúdo</a>
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary-600 text-white px-4 py-2 rounded-md z-50 transition-all duration-200">Pular para o conteúdo</a>
     
     <!-- Modern Navigation -->
-    <nav class="modern-navigation" role="navigation" aria-label="Navegação principal">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <h1>OvinoSul</h1>
-            </div>
-            
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link active">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                            <polyline points="9,22 9,12 15,12 15,22"/>
-                        </svg>
-                        Home
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="racas.html" class="nav-link">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                            <path d="M12 2c-1.5 0-3 1-3 3v2c0 1 .5 2 1.5 2.5L12 11l1.5-1.5c1-.5 1.5-1.5 1.5-2.5V5c0-2-1.5-3-3-3z"/>
-                            <path d="M12 11c-3 0-5.5 2-7 5 1.5 3 4 5 7 5s5.5-2 7-5c-1.5-3-4-5-7-5z"/>
-                            <circle cx="12" cy="16" r="3"/>
-                        </svg>
-                        Raças
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="vacinas.html" class="nav-link">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                            <line x1="16" y1="2" x2="16" y2="6"/>
-                            <line x1="8" y1="2" x2="8" y2="6"/>
-                            <line x1="3" y1="10" x2="21" y2="10"/>
-                        </svg>
-                        Vacinas
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#sobre" class="nav-link">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="m9,12 2,2 4-4"/>
-                        </svg>
-                        Sobre
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contato" class="nav-link">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                            <polyline points="22,6 12,13 2,6"/>
-                        </svg>
-                        Contato
-                    </a>
-                </li>
-            </ul>
-            
-            <button class="mobile-menu-btn" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div class="mobile-menu" id="mobile-menu">
-            <ul class="mobile-menu-list">
-                <li class="mobile-menu-item">
-                    <a href="#home" class="mobile-menu-link">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                            <polyline points="9,22 9,12 15,12 15,22"/>
-                        </svg>
-                        Home
-                    </a>
-                </li>
-                <li class="mobile-menu-item">
-                    <a href="racas.html" class="mobile-menu-link">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                            <path d="M12 2c-1.5 0-3 1-3 3v2c0 1 .5 2 1.5 2.5L12 11l1.5-1.5c1-.5 1.5-1.5 1.5-2.5V5c0-2-1.5-3-3-3z"/>
-                            <path d="M12 11c-3 0-5.5 2-7 5 1.5 3 4 5 7 5s5.5-2 7-5c-1.5-3-4-5-7-5z"/>
-                            <circle cx="12" cy="16" r="3"/>
-                        </svg>
-                        Raças de Ovinos
-                    </a>
-                </li>
-                <li class="mobile-menu-item">
-                    <a href="vacinas.html" class="mobile-menu-link">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-                            <line x1="16" y1="2" x2="16" y2="6"/>
-                            <line x1="8" y1="2" x2="8" y2="6"/>
-                            <line x1="3" y1="10" x2="21" y2="10"/>
-                        </svg>
-                        Calendário de Vacinas
-                    </a>
-                </li>
-                <li class="mobile-menu-item">
-                    <a href="#sobre" class="mobile-menu-link">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="m9,12 2,2 4-4"/>
-                        </svg>
-                        Sobre o Projeto
-                    </a>
-                </li>
-                <li class="mobile-menu-item">
-                    <a href="#contato" class="mobile-menu-link">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                            <polyline points="22,6 12,13 2,6"/>
-                        </svg>
-                        Contato
-                    </a>
-                </li>
-                <li class="mobile-menu-item">
-                    <a href="#origem" class="mobile-menu-link">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                            <path d="M2 17l10 5 10-5"/>
-                            <path d="M2 12l10 5 10-5"/>
-                        </svg>
-                        Origem e História
-                    </a>
-                </li>
-                <li class="mobile-menu-item">
-                    <a href="#guias" class="mobile-menu-link">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
-                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
-                        </svg>
-                        Guias Práticos
-                    </a>
-                </li>
-                <li class="mobile-menu-item">
-                    <a href="#recursos" class="mobile-menu-link">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
-                        </svg>
-                        Recursos
-                    </a>
-                </li>
-                <li class="mobile-menu-item">
-                    <a href="#produtores" class="mobile-menu-link">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                        </svg>
-                        Para Produtores
-                    </a>
-                </li>
-                <li class="mobile-menu-item">
-                    <a href="#novidades" class="mobile-menu-link">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                            <polygon points="13,2 3,14 12,14 11,22 21,10 12,10 13,2"/>
-                        </svg>
-                        Novidades 2025
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <main id="main" role="main">
-        <section class="hero" id="home" role="banner">
-            <div class="hero-background">
-                <img src="hero.jpg" alt="Paisagem dos pampas gaúchos com rebanho de ovinos ao amanhecer, mostrando a beleza natural do Rio Grande do Sul" class="hero-image" loading="eager" decoding="async">
-                <div class="hero-overlay"></div>
-            </div>
-            
-            <div class="hero-floating-elements" aria-hidden="true">
-                <div class="floating-element"></div>
-                <div class="floating-element"></div>
-                <div class="floating-element"></div>
-                <div class="floating-element"></div>
-                <div class="floating-element"></div>
-            </div>
-            
-            <div class="hero-content">
-                <div class="container">
-                    <div class="hero-text">
-                        <h1 class="hero-headline">OvinoSul: Seu guia de manejo de ovinos no Rio Grande do Sul</h1>
-                        <p class="hero-subheadline">Calendário de vacinação regional, perfis de raças locais e dicas práticas para iniciantes e produtores experientes do pampa gaúcho.</p>
-                        
-                        <div class="hero-actions">
-                            <a href="racas.html" class="btn btn-primary" aria-label="Explorar perfis detalhados das raças de ovinos">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                    <path d="M12 2c-1.5 0-3 1-3 3v2c0 1 .5 2 1.5 2.5L12 11l1.5-1.5c1-.5 1.5-1.5 1.5-2.5V5c0-2-1.5-3-3-3z"/>
-                                    <path d="M12 11c-3 0-5.5 2-7 5 1.5 3 4 5 7 5s5.5-2 7-5c-1.5-3-4-5-7-5z"/>
-                                    <circle cx="12" cy="16" r="3"/>
-                                </svg>
-                                Explorar Raças
-                            </a>
-                        </div>
-                        
-                        <div class="hero-search" role="search">
-                            <div class="search-wrapper">
-                                <label for="hero-search-input" class="sr-only">Buscar conteúdo do site</label>
-                                <input 
-                                    type="search" 
-                                    id="hero-search-input"
-                                    class="search-input" 
-                                    placeholder="Buscar raça, vacina ou dica…"
-                                    aria-describedby="search-description"
-                                >
-                                <span id="search-description" class="sr-only">Digite sua pesquisa e pressione Enter ou clique no botão de busca</span>
-                                <button class="search-btn" type="submit" aria-label="Executar busca">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                                        <circle cx="11" cy="11" r="8"></circle>
-                                        <path d="m21 21-4.35-4.35"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+    <nav class="fixed top-0 left-0 right-0 z-40 nav-background transition-all duration-300" 
+         role="navigation" 
+         aria-label="Navegação principal"
+         id="main-nav">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 lg:h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <h1 class="text-xl lg:text-2xl font-bold text-white">
+                        <span class="text-primary-300">Ovino</span>Sul
+                    </h1>
                 </div>
-            </div>
-            
-            <div class="scroll-indicator" role="button" tabindex="0" aria-label="Rolar para próxima seção">
-                <p class="scroll-indicator-text">Explore</p>
-                <div class="scroll-indicator-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <path d="M7 13l3 3 7-7"/>
-                        <path d="M12 17V3"/>
-                    </svg>
-                </div>
-            </div>
-        </section>
-
-        <section class="features" id="features" role="region" aria-labelledby="features-title">
-            <div class="container">
-                <header class="features-header">
-                    <h2 id="features-title" class="features-title">O que você encontra aqui</h2>
-                    <p class="features-subtitle">Ferramentas e informações pensadas especialmente para o criador gaúcho, baseadas nas particularidades do nosso clima e território.</p>
-                </header>
-
-                <div class="features-grid">
-                    <article class="feature-card">
-                        <div class="feature-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 2c-1.5 0-3 1-3 3v2c0 1 .5 2 1.5 2.5L12 11l1.5-1.5c1-.5 1.5-1.5 1.5-2.5V5c0-2-1.5-3-3-3z"/>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#home" 
+                           class="px-3 py-2 rounded-md text-sm font-medium text-primary-100 hover:text-white hover:bg-white/10 transition-all duration-200 flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9,22 9,12 15,12 15,22"/>
+                            </svg>
+                            Home
+                        </a>
+                        <a href="racas.html" 
+                           class="px-3 py-2 rounded-md text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200 flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2c-1.5 0-3 1-3 3v2c0 1 .5 2 1.5 2.5L12 11l1.5-1.5c1-.5 1.5-1.5 1.5-2.5V5c0-2-1.5-3-3-3z"/>
                                 <path d="M12 11c-3 0-5.5 2-7 5 1.5 3 4 5 7 5s5.5-2 7-5c-1.5-3-4-5-7-5z"/>
                                 <circle cx="12" cy="16" r="3"/>
                             </svg>
-                        </div>
-                        <h3 class="feature-title">Perfis de Raças</h3>
-                        <p class="feature-description">Fichas completas das principais raças ovinas com dados sobre adaptação ao clima gaúcho, produtividade e características regionais.</p>
-                        <a href="racas.html" class="feature-link">
-                            Explorar raças
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M5 12h14"/>
-                                <path d="M12 5l7 7-7 7"/>
-                            </svg>
+                            Raças
                         </a>
-                    </article>
-
-                    <article class="feature-card">
-                        <div class="feature-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <a href="vacinas.html" 
+                           class="px-3 py-2 rounded-md text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200 flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
                                 <line x1="16" y1="2" x2="16" y2="6"/>
                                 <line x1="8" y1="2" x2="8" y2="6"/>
                                 <line x1="3" y1="10" x2="21" y2="10"/>
                             </svg>
+                            Vacinas
+                        </a>
+                        <a href="#sobre" 
+                           class="px-3 py-2 rounded-md text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200 flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="m9,12 2,2 4-4"/>
+                            </svg>
+                            Sobre
+                        </a>
+                        <a href="#contato" 
+                           class="px-3 py-2 rounded-md text-sm font-medium text-white/80 hover:text-white hover:bg-white/10 transition-all duration-200 flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            Contato
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button type="button" 
+                            class="glass-dark p-2 rounded-md text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/50 transition-all duration-200"
+                            aria-controls="mobile-menu" 
+                            aria-expanded="false"
+                            id="mobile-menu-button">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation Menu -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 bg-slate-800/95 backdrop-blur-md border-t border-white/10">
+                <a href="#home" class="block px-3 py-2 rounded-md text-base font-medium text-primary-100 hover:text-white hover:bg-white/10">Home</a>
+                <a href="racas.html" class="block px-3 py-2 rounded-md text-base font-medium text-white/80 hover:text-white hover:bg-white/10">Raças de Ovinos</a>
+                <a href="vacinas.html" class="block px-3 py-2 rounded-md text-base font-medium text-white/80 hover:text-white hover:bg-white/10">Calendário de Vacinas</a>
+                <a href="#sobre" class="block px-3 py-2 rounded-md text-base font-medium text-white/80 hover:text-white hover:bg-white/10">Sobre o Projeto</a>
+                <a href="#contato" class="block px-3 py-2 rounded-md text-base font-medium text-white/80 hover:text-white hover:bg-white/10">Contato</a>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main" role="main" class="pt-16 lg:pt-20">
+        <!-- Hero Section -->
+        <section class="relative hero-background min-h-screen flex items-center justify-center overflow-hidden" 
+                 id="home" 
+                 role="banner">
+            <!-- Background overlay -->
+            <div class="absolute inset-0 bg-gradient-to-br from-teal-900/80 via-teal-800/70 to-teal-600/60"></div>
+            
+            <!-- Floating elements -->
+            <div class="absolute inset-0 overflow-hidden pointer-events-none">
+                <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-white/20 rounded-full animate-float" style="animation-delay: 0s;"></div>
+                <div class="absolute top-1/3 right-1/4 w-3 h-3 bg-white/15 rounded-full animate-float" style="animation-delay: 2s;"></div>
+                <div class="absolute bottom-1/3 left-1/3 w-2 h-2 bg-white/25 rounded-full animate-float" style="animation-delay: 4s;"></div>
+                <div class="absolute bottom-1/4 right-1/3 w-4 h-4 bg-white/10 rounded-full animate-float" style="animation-delay: 1s;"></div>
+            </div>
+            
+            <!-- Hero content -->
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div class="space-y-8 animate-fade-in">
+                    <!-- Main headline -->
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight">
+                        <span class="block">OvinoSul</span>
+                        <span class="block text-xl md:text-2xl lg:text-3xl font-medium text-primary-200 mt-2">
+                            Seu guia de manejo de ovinos no Rio Grande do Sul
+                        </span>
+                    </h1>
+                    
+                    <!-- Subtitle -->
+                    <p class="max-w-3xl mx-auto text-lg md:text-xl lg:text-2xl text-white/90 leading-relaxed">
+                        Calendário de vacinação regional, perfis de raças locais e dicas práticas para iniciantes e produtores experientes do pampa gaúcho.
+                    </p>
+                    
+                    <!-- CTA Button -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up">
+                        <a href="racas.html" 
+                           class="group inline-flex items-center gap-3 bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-2xl text-lg font-semibold shadow-2xl hover:shadow-primary-500/25 transform hover:scale-105 transition-all duration-300 border border-primary-500/30"
+                           aria-label="Explorar perfis detalhados das raças de ovinos">
+                            <svg class="w-6 h-6 group-hover:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2c-1.5 0-3 1-3 3v2c0 1 .5 2 1.5 2.5L12 11l1.5-1.5c1-.5 1.5-1.5 1.5-2.5V5c0-2-1.5-3-3-3z"/>
+                                <path d="M12 11c-3 0-5.5 2-7 5 1.5 3 4 5 7 5s5.5-2 7-5c-1.5-3-4-5-7-5z"/>
+                                <circle cx="12" cy="16" r="3"/>
+                            </svg>
+                            Explorar Raças
+                        </a>
+                    </div>
+                    
+                    <!-- Search Bar -->
+                    <div class="max-w-2xl mx-auto animate-slide-up" style="animation-delay: 0.2s;" role="search">
+                        <div class="relative">
+                            <label for="hero-search-input" class="sr-only">Buscar conteúdo do site</label>
+                            <input type="search" 
+                                   id="hero-search-input"
+                                   class="w-full px-6 py-4 pl-14 rounded-2xl glass text-white placeholder-white/70 focus:outline-none focus:ring-4 focus:ring-white/30 text-lg transition-all duration-300"
+                                   placeholder="Buscar raça, vacina ou dica…"
+                                   aria-describedby="search-description">
+                            <span id="search-description" class="sr-only">Digite sua pesquisa e pressione Enter ou clique no botão de busca</span>
+                            <div class="absolute left-4 top-1/2 transform -translate-y-1/2">
+                                <svg class="w-6 h-6 text-white/70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <circle cx="11" cy="11" r="8"/>
+                                    <path d="m21 21-4.35-4.35"/>
+                                </svg>
+                            </div>
+                            <button type="submit" 
+                                    class="search-btn absolute right-2 top-1/2 transform -translate-y-1/2 bg-primary-600 hover:bg-primary-700 text-white p-3 rounded-xl transition-colors duration-200"
+                                    aria-label="Executar busca">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                                </svg>
+                            </button>
                         </div>
-                        <h3 class="feature-title">Calendário de Vacinas</h3>
-                        <p class="feature-description">Cronograma de vacinação específico para o Rio Grande do Sul, com doses, intervalos e épocas ideais organizados por categoria.</p>
-                        <a href="vacinas.html" class="feature-link">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Scroll indicator -->
+            <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                <div class="flex flex-col items-center text-white/80 hover:text-white transition-colors duration-200 cursor-pointer"
+                     role="button" 
+                     tabindex="0" 
+                     aria-label="Rolar para próxima seção"
+                     onclick="document.getElementById('features').scrollIntoView({behavior: 'smooth'})">
+                    <p class="text-sm font-medium mb-2">Explore</p>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="relative features-background py-20 lg:py-32 overflow-hidden" 
+                 id="features" 
+                 role="region" 
+                 aria-labelledby="features-title">
+            <!-- Background overlay -->
+            <div class="absolute inset-0 bg-gradient-to-br from-slate-50/95 to-blue-50/90"></div>
+            
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <header class="text-center mb-16 lg:mb-20 animate-fade-in">
+                    <h2 id="features-title" class="text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-6">
+                        O que você encontra aqui
+                    </h2>
+                    <p class="max-w-3xl mx-auto text-xl text-gray-600 leading-relaxed">
+                        Ferramentas e informações pensadas especialmente para o criador gaúcho, baseadas nas particularidades do nosso clima e território.
+                    </p>
+                </header>
+
+                <!-- Features Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 mb-16 lg:mb-20">
+                    <!-- Feature Card 1 -->
+                    <article class="group bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-white/50 animate-slide-up">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2c-1.5 0-3 1-3 3v2c0 1 .5 2 1.5 2.5L12 11l1.5-1.5c1-.5 1.5-1.5 1.5-2.5V5c0-2-1.5-3-3-3z"/>
+                                    <path d="M12 11c-3 0-5.5 2-7 5 1.5 3 4 5 7 5s5.5-2 7-5c-1.5-3-4-5-7-5z"/>
+                                    <circle cx="12" cy="16" r="3"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Perfis de Raças</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Fichas completas das principais raças ovinas com dados sobre adaptação ao clima gaúcho, produtividade e características regionais.
+                        </p>
+                        <a href="racas.html" 
+                           class="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-semibold group-hover:gap-3 transition-all duration-300">
+                            Explorar raças
+                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14"/>
+                                <path d="M12 5l7 7-7 7"/>
+                            </svg>
+                        </a>
+                    </article>
+
+                    <!-- Feature Card 2 -->
+                    <article class="group bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-white/50 animate-slide-up" style="animation-delay: 0.1s;">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-2xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                    <line x1="16" y1="2" x2="16" y2="6"/>
+                                    <line x1="8" y1="2" x2="8" y2="6"/>
+                                    <line x1="3" y1="10" x2="21" y2="10"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Calendário de Vacinas</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Cronograma de vacinação específico para o Rio Grande do Sul, com doses, intervalos e épocas ideais organizados por categoria.
+                        </p>
+                        <a href="vacinas.html" 
+                           class="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-semibold group-hover:gap-3 transition-all duration-300">
                             Ver calendário
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M5 12h14"/>
+                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14"/>
                                 <path d="M12 5l7 7-7 7"/>
                             </svg>
                         </a>
                     </article>
 
-                    <article class="feature-card">
-                        <div class="feature-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                                <polyline points="14,2 14,8 20,8"/>
-                                <line x1="16" y1="13" x2="8" y2="13"/>
-                                <line x1="16" y1="17" x2="8" y2="17"/>
-                            </svg>
+                    <!-- Feature Card 3 -->
+                    <article class="group bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-white/50 animate-slide-up md:col-span-2 lg:col-span-1" style="animation-delay: 0.2s;">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14,2 14,8 20,8"/>
+                                    <line x1="16" y1="13" x2="8" y2="13"/>
+                                    <line x1="16" y1="17" x2="8" y2="17"/>
+                                </svg>
+                            </div>
                         </div>
-                        <h3 class="feature-title">Guias Práticos</h3>
-                        <p class="feature-description">Dicas de manejo, alimentação e cuidados específicos para o clima do Rio Grande do Sul, organizados por temas práticos.</p>
-                        <a href="#guias" class="feature-link">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Guias Práticos</h3>
+                        <p class="text-gray-600 mb-6 leading-relaxed">
+                            Dicas de manejo, alimentação e cuidados específicos para o clima do Rio Grande do Sul, organizados por temas práticos.
+                        </p>
+                        <a href="#guias" 
+                           class="inline-flex items-center gap-2 text-purple-600 hover:text-purple-700 font-semibold group-hover:gap-3 transition-all duration-300">
                             Ver guias
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M5 12h14"/>
+                            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14"/>
                                 <path d="M12 5l7 7-7 7"/>
                             </svg>
                         </a>
                     </article>
                 </div>
 
-                <div class="features-stats">
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <span class="stat-number">15+</span>
-                            <p class="stat-label">Raças Catalogadas</p>
+                <!-- Statistics -->
+                <div class="bg-white/50 backdrop-blur-sm rounded-3xl p-8 lg:p-12 shadow-xl border border-white/50 animate-fade-in">
+                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+                        <div class="text-center">
+                            <div class="text-4xl lg:text-5xl font-bold text-primary-600 mb-2">15+</div>
+                            <p class="text-gray-600 font-medium">Raças Catalogadas</p>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-number">50+</span>
-                            <p class="stat-label">Vacinas Organizadas</p>
+                        <div class="text-center">
+                            <div class="text-4xl lg:text-5xl font-bold text-emerald-600 mb-2">50+</div>
+                            <p class="text-gray-600 font-medium">Vacinas Organizadas</p>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-number">100%</span>
-                            <p class="stat-label">Focado no RS</p>
+                        <div class="text-center">
+                            <div class="text-4xl lg:text-5xl font-bold text-purple-600 mb-2">100%</div>
+                            <p class="text-gray-600 font-medium">Focado no RS</p>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-number">2025</span>
-                            <p class="stat-label">Sempre Atualizado</p>
+                        <div class="text-center">
+                            <div class="text-4xl lg:text-5xl font-bold text-orange-600 mb-2">2025</div>
+                            <p class="text-gray-600 font-medium">Sempre Atualizado</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="features-cta">
-                    <h3 class="cta-title">Pronto para começar?</h3>
-                    <p class="cta-description">Explore nossos recursos e torne-se um criador de ovinos mais preparado e bem-sucedido no Rio Grande do Sul.</p>
-                    <div class="cta-buttons">
-                        <a href="racas.html" class="btn btn-primary btn-lg">Explorar Raças</a>
-                        <a href="vacinas.html" class="btn btn-secondary btn-lg">Ver Calendário</a>
+                <!-- Call to Action -->
+                <div class="text-center mt-16 lg:mt-20 animate-slide-up">
+                    <h3 class="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Pronto para começar?</h3>
+                    <p class="max-w-2xl mx-auto text-xl text-gray-600 mb-8 leading-relaxed">
+                        Explore nossos recursos e torne-se um criador de ovinos mais preparado e bem-sucedido no Rio Grande do Sul.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="racas.html" 
+                           class="inline-flex items-center gap-3 bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-2xl text-lg font-semibold shadow-xl hover:shadow-primary-500/25 transform hover:scale-105 transition-all duration-300">
+                            Explorar Raças
+                        </a>
+                        <a href="vacinas.html" 
+                           class="inline-flex items-center gap-3 bg-white text-primary-600 hover:bg-primary-50 px-8 py-4 rounded-2xl text-lg font-semibold shadow-xl border-2 border-primary-600 hover:border-primary-700 transform hover:scale-105 transition-all duration-300">
+                            Ver Calendário
+                        </a>
                     </div>
                 </div>
-
-
             </div>
         </section>
     </main>
 
     <!-- Screen reader only styles -->
     <style>
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 6px;
-            background: var(--color-primary);
-            color: white;
-            padding: 8px;
-            text-decoration: none;
-            border-radius: 4px;
-            z-index: 10000;
-        }
-        
-        .skip-link:focus {
-            top: 6px;
-        }
-        
         .sr-only {
             position: absolute;
             width: 1px;
@@ -445,6 +484,16 @@
             white-space: nowrap;
             border: 0;
         }
+        .focus\:not-sr-only:focus {
+            position: static;
+            width: auto;
+            height: auto;
+            padding: 0.5rem 1rem;
+            margin: 0;
+            overflow: visible;
+            clip: auto;
+            white-space: normal;
+        }
     </style>
 
     <!-- Scripts -->
@@ -452,7 +501,50 @@
     <script src="modern-navigation.js"></script>
     <script src="advanced-scroll-controller.js"></script>
     
-    <!-- Service Worker Registration (optional) -->
+    <!-- Mobile menu functionality -->
+    <script>
+        // Modern mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+                
+                mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+                mobileMenu.classList.toggle('hidden');
+                
+                // Animation classes
+                if (!isExpanded) {
+                    mobileMenu.classList.add('animate-fade-in');
+                }
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!mobileMenuButton.contains(event.target) && !mobileMenu.contains(event.target)) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.setAttribute('aria-expanded', 'false');
+                }
+            });
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+    
+    <!-- Service Worker Registration -->
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', function() {
